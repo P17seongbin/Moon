@@ -92,6 +92,19 @@
 					<li><a href="{{ site.url }}/tags/">All Tags</a></li>
 				</ul>
 			</li>
+			{% if site.categories %}
+				<li>
+				<a herf="#">Category</a>
+				<ul class="dl-submenu">
+					{% for c in site.categories %}
+						<li><a href="{{ site.url }}/category/{{ c[0] }}"> {{c[0]}} </a></li>
+					{% endfor %}
+				</ul>
+				</li>
+			{% endif %}
+			
+			<!-- category navigation -->
+			
 			{% for link in site.data.navigation %}
 		    {% if link.url contains 'http' %}
 		        {% assign domain = '' %}
@@ -99,6 +112,6 @@
 		        {% assign domain = site.url %}
 		    {% endif %}
 		    <li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ link.title }}</a></li>
-		  {% endfor %}
+			{% endfor %}
 		</ul><!-- /.dl-menu -->
 	</nav><!-- /.dl-menuwrapper -->
